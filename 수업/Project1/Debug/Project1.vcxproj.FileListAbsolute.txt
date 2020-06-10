@@ -1,0 +1,6 @@
+C:\Users\Elite\source\repos\Project1\Debug\Project1.exe
+C:\Users\Elite\source\repos\Project1\Debug\Project1.pdb
+C:\Users\Elite\Desktop\Project1\Debug\Project1.exe
+C:\Users\Elite\Desktop\Project1\Debug\Project1.pdb
+C:\Users\Elite\Desktop\수업\Project1\Debug\Project1.exe
+C:\Users\Elite\Desktop\수업\Project1\Debug\Project1.pdb

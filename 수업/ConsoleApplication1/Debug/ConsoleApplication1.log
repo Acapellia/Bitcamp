@@ -1,0 +1,17 @@
+﻿  day4-easywin_team02.c
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-easywin_team02.c(5,12): warning C4013: 'rand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  day4-team-omok.c
+  day4-team01.c
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-team01.c(8,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  day4-team03.c
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-team03.c(6,12): warning C4013: 'rand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  day4-team04.c
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-team04.c(230,13): warning C4013: 'rand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-team04.c(346,7): warning C4013: 'srand'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\day4-team04.c(346,26): warning C4013: 'time'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  코드를 생성하고 있습니다...
+  소스.cpp
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\소스.cpp(9,92): error C2440: '초기화 중': 'const char [3]'에서 'char *'(으)로 변환할 수 없습니다.
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\소스.cpp(9,17): message : 문자열 리터럴로부터의 변환은 const 한정자가 손실됩니다(/Zc:strictStrings 참조).
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\소스.cpp(9,92): error C2440: '초기화 중': 'const char [4]'에서 'char *'(으)로 변환할 수 없습니다.
+C:\Users\Elite\Desktop\수업\ConsoleApplication1\소스.cpp(9,29): message : 문자열 리터럴로부터의 변환은 const 한정자가 손실됩니다(/Zc:strictStrings 참조).
