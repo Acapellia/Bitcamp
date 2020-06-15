@@ -1,2 +1,4 @@
 C:\Users\Elite\Desktop\200612_class\Debug\200612_class.exe
 C:\Users\Elite\Desktop\200612_class\Debug\200612_class.pdb
+C:\Users\Elite\Desktop\Bitcamp\수업\200612_class\Debug\200612_class.exe
+C:\Users\Elite\Desktop\Bitcamp\수업\200612_class\Debug\200612_class.pdb
