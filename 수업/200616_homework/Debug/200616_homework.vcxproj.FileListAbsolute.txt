@@ -1,0 +1,4 @@
+C:\Users\Elite\source\repos\200616_homework\Debug\200616_homework.exe
+C:\Users\Elite\source\repos\200616_homework\Debug\200616_homework.pdb
+C:\Users\Elite\Desktop\200616_homework\Debug\200616_homework.exe
+C:\Users\Elite\Desktop\200616_homework\Debug\200616_homework.pdb
