@@ -27,9 +27,6 @@
     <ClCompile Include="Loop.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="turboc.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ForLoop.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -37,6 +34,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MoveSharp.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="turboc.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

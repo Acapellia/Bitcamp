@@ -44,7 +44,7 @@ void print3() { //3번
 	int cnt = 0; // 방향을 바꿀 횟수
 	int h = 23, w = 53; // 벽을 위한 변수 높이 0-23 너비 0-53
 	while (cnt < 1000) { // 무한(1000번) 반복
-		while (0 <= x + xc && x + xc <= w && 0 <= y + yc && y + yc <= h) { // 각 방향에서 벽을 만날때까지 이동
+		if (0 <= x + xc && x + xc <= w && 0 <= y + yc && y + yc <= h) { // 각 방향에서 벽을 만날때까지 이동
 			gotoxy(x + xc, y + yc);
 			printf("#");
 			delay(30);
