@@ -1,2 +1,4 @@
 C:\Users\Elite\Desktop\200611\Debug\200611.exe
 C:\Users\Elite\Desktop\200611\Debug\200611.pdb
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\Debug\200611.exe
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\Debug\200611.pdb

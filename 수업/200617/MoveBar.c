@@ -45,6 +45,8 @@ void moveSharp() { //3번
 void main()
 {
 	setcursortype(NOCURSOR);
+	int frameCnt=0, ballCnt=3, barCnt = 1;
+
 	// bar variable
 	char* bar = "▣▣▣▣";
 	int preX, preY, newX, newY;
@@ -67,41 +69,44 @@ void main()
 	// loop
 	while (TRUE)
 	{
-		// move sharp
-		if (0 <= x + xc && x + xc <= w && 0 <= y + yc && y + yc <= h) { // 각 방향에서 벽을 만날때까지 이동
-			gotoxy(x, y);
-			printf(" ");
-			x += xc; y += yc; // 좌표 이동
-			gotoxy(x, y);
-			printf("#");
+		if (frameCnt % ballCnt == 0) {
+			// move sharp
+			if (0 <= x + xc && x + xc <= w && 0 <= y + yc && y + yc <= h) { // 각 방향에서 벽을 만날때까지 이동
+				gotoxy(x, y);
+				printf(" ");
+				x += xc; y += yc; // 좌표 이동
+				gotoxy(x, y);
+				printf("#");
 
+			}
+			// 벽을 만났을 때 다음 방향 설정
+			if ((x == 0 || x == w) && (y == 0 || y == h)) { xc *= -1; yc *= -1; }
+			else if (x == 0 || x == w) { xc *= -1; }
+			else if (y == 0 || y == h || ((newY-1<= y &&y <= newY+1) && (newX <= x && x <= newX + 7))) { yc *= -1; }
 		}
-		// 벽을 만났을 때 다음 방향 설정
-		if ((x == 0 || x == w) && (y == 0 || y == h)) { xc *= -1; yc *= -1; }
-		else if (x == 0 || x == w) { xc *= -1; }
-		else if (y == 0 || y == h || ((y == newY) && (newX <= x && x <= newX + 7))) { yc *= -1; }
+		if (frameCnt % barCnt == 0) {
+			// move bar
+			preX = newX;
+			preY = newY;
 
-		// move bar
-		preX = newX;
-		preY = newY;
-
-		if (GetAsyncKeyState(VK_UP) & 0x8000) {
-			if(newY>0) newY--;
+			if (GetAsyncKeyState(VK_UP) & 0x8000) {
+				if (newY > 0) newY--;
+			}
+			if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+				if (newY < HEIGHT + 1) newY++;
+			}
+			if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+				if (newX > 0) newX--;
+			}
+			if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+				if (newX < WIDTH - 6) newX++;
+			}
+			if (preX != newX || preY != newY) {
+				drawBar(preX, preY, "        ");
+				drawBar(newX, newY, bar);
+			}
 		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-			if(newY<HEIGHT+1) newY++;
-		}
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			if(newX>0) newX--;
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			if(newX<WIDTH-6) newX++;
-		}
-		if (preX != newX || preY != newY) {
-			drawBar(preX, preY, "        ");
-			drawBar(newX, newY, bar);
-		}
-
+		frameCnt++;
 		delay(20);
 	}
 }

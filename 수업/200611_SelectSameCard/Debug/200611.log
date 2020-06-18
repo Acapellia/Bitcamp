@@ -1,26 +1,26 @@
 ﻿  소스.cpp
-C:\Users\Elite\Desktop\200611\소스.cpp(155,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,23): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,83): warning C4305: '초기화 중': 'int'에서 'char'(으)로 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,23): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,29): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,29): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,35): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,35): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,41): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,41): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,47): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,47): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,53): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,53): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,59): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,59): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,65): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,65): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,71): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,71): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,77): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(158,77): warning C4309: '초기화 중': 상수 값이 잘립니다.
-C:\Users\Elite\Desktop\200611\소스.cpp(180,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200611\소스.cpp(191,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  200611.vcxproj -> C:\Users\Elite\Desktop\200611\Debug\200611.exe
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(155,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,23): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,83): warning C4305: '초기화 중': 'int'에서 'char'(으)로 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,23): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,29): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,29): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,35): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,35): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,41): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,41): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,47): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,47): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,53): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,53): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,59): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,59): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,65): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,65): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,71): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,71): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,77): warning C4838: 'int'에서 'char'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(158,77): warning C4309: '초기화 중': 상수 값이 잘립니다.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(180,3): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\소스.cpp(191,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  200611.vcxproj -> C:\Users\Elite\Desktop\Bitcamp\수업\200611_SelectSameCard\Debug\200611.exe
