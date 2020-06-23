@@ -27,8 +27,8 @@ typedef struct _Game {
 }Game;
 
 void init_fish(FishType ft[TypeNum], Fish* shark) {
-	char rshape[TypeNum][20] = {{"<¡¤)<<"},{"<¡Ò)¡ì"},{"<¡¤)))<<"}, {"<(¡Æ)))><<"},{"<¡Æ))))><<"},{"¡Ã(¢ª¢ª)¡Â"} };
-	char shape[TypeNum][20] = {{">>(¡¤>"},{"¡í(¡Ò>"},{">>(((¡¤>"}, {">><(((¡Æ)>"},{">><((((¡Æ>"},{"¡Ã(¢ª¢ª)¡Â"} };
+	char rshape[TypeNum][20] = { {"<¡¤)<<"},{"<¡Ò)¡ì"},{"<¡¤)))<<"}, {"<(¡Æ)))><<"},{"<¡Æ))))><<"},{"¡Ã(¢ª¢ª)¡Â"} };
+	char shape[TypeNum][20] = { {">>(¡¤>"},{"¡í(¡Ò>"},{">>(((¡¤>"}, {">><(((¡Æ)>"},{">><((((¡Æ>"},{"¡Ã(¢ª¢ª)¡Â"} };
 	for (int i = 0; i < TypeNum; i++) {
 		strcpy_s(ft[i].shape, 20, shape[i]);
 		strcpy_s(ft[i].rshape, 20, rshape[i]);
@@ -38,7 +38,7 @@ void init_fish(FishType ft[TypeNum], Fish* shark) {
 	strcpy_s(shark->ft.shape, 20, ">¡Æ))(1)>¡ì");
 	strcpy_s(shark->ft.rshape, 20, "¡í<(1)((¡Æ<");
 	shark->ft.type = 9;
-	shark->x = 10; shark->y = 10; shark->Endx = 10+strlen(shark->ft.rshape);  shark->life = 1;
+	shark->x = 10; shark->y = 10; shark->Endx = 10 + strlen(shark->ft.rshape);  shark->life = 1;
 }
 char* LevelUp(char* shape) {
 	for (int i = 0; i < strlen(shape); i++)
@@ -128,12 +128,12 @@ Fish create_fish(Game game, Fish fish[MAXFISH], FishType ft[TypeNum], int* fcnt)
 	x = rand() % (w - 1) + 1;
 	y = rand() % (h - 2) + 1;
 	t = rand() % 10;
-	if (t < 4 && game.level!=1) t = game.level - 1;
+	if (t < 4 && game.level != 1) t = game.level - 1;
 	else if (t < 7) t = game.level;
-	else if (t < 9 && game.level+1 < 5) t = game.level + 1;
+	else if (t < 9 && game.level + 1 < 5) t = game.level + 1;
 	else if (t < 10 && game.level + 2 < 5) t = game.level + 2;
 	fish[*fcnt].x = x; fish[*fcnt].y = y; fish[*fcnt].Endx = x + strlen(ft[t].shape);
-	fish[*fcnt].life = 1; fish[*fcnt].dir = rand() % 2 == 0 ? 1 : -1; fish[*fcnt].ft = ft[t-1];
+	fish[*fcnt].life = 1; fish[*fcnt].dir = rand() % 2 == 0 ? 1 : -1; fish[*fcnt].ft = ft[t - 1];
 	(*fcnt)++;
 	return fish[(*fcnt) - 1];
 }
@@ -174,7 +174,7 @@ int hit(Game* game, Fish* shark, Fish fish[100], int fcnt, int* dcnt) {
 		game->level = (game->eat / 10) + 1;
 	}
 	if (tlevel < game->level) {
-		strcpy(shark->ft.rshape,LevelUp(shark->ft.rshape));
+		strcpy(shark->ft.rshape, LevelUp(shark->ft.rshape));
 	}
 	return 0;
 }
@@ -244,6 +244,7 @@ int main()
 	FishType ft[TypeNum];
 	Fish shark = { 0 };
 	init_fish(ft, &shark);
+
 	/*for (int i = 0; i < TypeNum; i++) {
 		printf("%d %s\n\n", ft[i].type, ft[i].shape);
 	}
@@ -252,7 +253,6 @@ int main()
 	GameStart(&shark, ft);
 
 	gotoxy(0, MapWallHEnd3 + 1);
-	//LevelUp(shark.ft.shape);
 
 	return 0;
 }
