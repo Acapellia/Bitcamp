@@ -1,8 +1,9 @@
 // "public: void __thiscall template명 ~~~~~ 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다. main.obj
 // template는 헤더와 소스파일의 분리를 허락하지 않는다.
-// #include<~~.h> 대신 #include<~~.cpp> (cpp에는 해당 h를 include 해야함) 를 사용한다
+// 1) #include<~~.h> 대신 #include<~~.cpp> (cpp에는 해당 h를 include 해야함) 를 사용한다
+// 2) 헤더와 소스파일을 합친다.
 #include<iostream>
-#include "27_PosList.cpp"
+#include "PosList.h"
 #define DEFAULT_POSLEN 24
 
 using namespace std;
