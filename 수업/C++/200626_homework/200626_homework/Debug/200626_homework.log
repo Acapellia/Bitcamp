@@ -1,0 +1,5 @@
+﻿  Array.cpp
+C:\Users\Elite\Desktop\200626_homework\200626_homework\Array.cpp(86,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\Elite\Desktop\200626_homework\200626_homework\Array.cpp(110,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\Elite\Desktop\200626_homework\200626_homework\Array.cpp(113,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  200626_homework.vcxproj -> C:\Users\Elite\Desktop\200626_homework\Debug\200626_homework.exe
