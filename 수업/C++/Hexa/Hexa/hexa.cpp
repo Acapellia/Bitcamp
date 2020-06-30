@@ -1,15 +1,22 @@
 #include "Turboc.h"
 #include <iostream>
 using namespace std;
+// keyboard 입력
 #define LEFT 75
 #define RIGHT 77
 #define UP 72
 #define DOWN 80
+
+// 난이도 조절 및 종료키
 #define PGUP 73
 #define PGDN 81
 #define ESC 27
+
+// 옆에 조그만 스크린
 #define BX 5
 #define BY 1
+
+// 게임 스크린
 #define BW 10
 #define BH 20
 
@@ -76,7 +83,7 @@ void main()
 			nStay = nFrame;
 			for (; 2;) {
 				gotoxy(0, 0);
-				printf("stay %2d frame %2d brick %2d", nStay,nFrame,bricknum); delay(100);
+				printf("stay %2d frame %2d brick %2d", nStay, nFrame, bricknum); delay(100);
 				// stay가 계속 줄어 들다가 frame(일정시간)과 같아지면 한칸 내려옴
 				if (--nStay == 0) {
 					nStay = nFrame;
@@ -99,10 +106,12 @@ void main()
 	setcursortype(NORMALCURSOR);
 }
 
+// 스크린 그리기
 void DrawScreen()
 {
 	int x, y;
 
+	// 게임 메인 스크린
 	for (x = 0; x < BW + 2; x++) {
 		for (y = 0; y < BH + 2; y++) {
 			gotoxy(BX + x * 2, BY + y);
@@ -117,7 +126,7 @@ void DrawScreen()
 	DrawNext();
 	PrintInfo();
 }
-
+// board 전체 그리기
 void DrawBoard()
 {
 	int x, y;
@@ -129,7 +138,7 @@ void DrawBoard()
 		}
 	}
 }
-
+// 키보드 입력 처리
 BOOL ProcessKey()
 {
 	int ch;
@@ -202,7 +211,7 @@ BOOL ProcessKey()
 	}
 	return FALSE;
 }
-
+// 벽돌 출력
 void PrintBrick(BOOL Show)
 {
 	int i;
@@ -212,7 +221,7 @@ void PrintBrick(BOOL Show)
 		puts(arTile[Show ? brick[i] : EMPTY]);
 	}
 }
-
+// 주위에 벽돌이 있는지 체크
 int GetAround(int x, int y)
 {
 	int i, k = EMPTY;
@@ -222,7 +231,7 @@ int GetAround(int x, int y)
 	}
 	return k;
 }
-
+// 밑으로 한칸씩 내려옴
 BOOL MoveDown()
 {
 	if (GetAround(nx, ny + 1) != EMPTY) {
@@ -308,17 +317,17 @@ void TestFull()
 				}
 			}
 		}
-
+		// 연속된 무늬 삭제 후 다시 그림
 		DrawBoard();
 		score += arScoreInc[min(count / 3, 7)];
 		PrintInfo();
 	}
 }
-
+// 옆에 게임 정보창 및 다음 벽돌
 void DrawNext()
 {
 	int x, y, i;
-
+	// 옆 게임창 벽
 	for (x = 50; x <= 70; x += 2) {
 		for (y = 12; y <= 18; y++) {
 			gotoxy(x, y);
@@ -326,6 +335,7 @@ void DrawNext()
 		}
 	}
 
+	// 다음 벽돌
 	for (i = 0; i < 3; i++) {
 		gotoxy(60, 14 + i);
 		puts(arTile[nbrick[i]]);

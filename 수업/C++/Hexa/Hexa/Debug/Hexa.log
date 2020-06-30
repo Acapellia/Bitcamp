@@ -1,7 +1,7 @@
 ﻿  hexa.cpp
-C:\Users\Elite\Desktop\Hexa\Hexa\hexa.cpp(97,15): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\Elite\Desktop\Hexa\Hexa\hexa.cpp(138,6): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
-C:\Users\Elite\Desktop\Hexa\Hexa\hexa.cpp(139,8): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\Elite\Desktop\Hexa\Hexa\hexa.cpp(141,9): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-C:\Users\Elite\Desktop\Hexa\Hexa\hexa.cpp(195,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-  Hexa.vcxproj -> C:\Users\Elite\Desktop\Hexa\Debug\Hexa.exe
+C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Hexa\hexa.cpp(104,15): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Hexa\hexa.cpp(147,6): warning C4996: 'kbhit': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _kbhit. See online help for details.
+C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Hexa\hexa.cpp(148,8): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Hexa\hexa.cpp(150,9): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Hexa\hexa.cpp(204,5): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  Hexa.vcxproj -> C:\Users\Elite\Desktop\Bitcamp\수업\C++\Hexa\Debug\Hexa.exe

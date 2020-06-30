@@ -28,6 +28,7 @@ void problem1() {
 class Histogram {
 private:
 	string str;
+	int cnt = 0;
 public:
 	Histogram() {}
 	Histogram(string _str) {
@@ -49,11 +50,12 @@ public:
 			if (str[i] >= 'a' && str[i] <= 'z') {
 				int idx = (str[i] - 'a')+1 ;
 				alpha[idx]++;
+				cnt++;
 			}
 		}
-		
+		cout << "\n¾ËÆÄºª ¼ö : " << cnt << endl<<endl;
 		for (int i = 1; i <= 26; i++) {
-			cout << (char)('a' + (i - 1)) <<" ("<< alpha[i] << ")      : ";
+			cout << (char)('a' + (i - 1)) <<" ("<< alpha[i] << ")     :  ";
 			for (int j = 0; j < alpha[i]; j++) {
 				cout << "*";
 			}

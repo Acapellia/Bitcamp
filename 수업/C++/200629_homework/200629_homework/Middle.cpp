@@ -28,6 +28,7 @@ void problem3() {
 	for (int i = 1; i <= 5; i++) {
 		cout << i << "번째 실수를 입력하세요 : ";
 		double num; cin >> num;
+		if (i == 1) max = num;
 		max < num ? (max = num) : (max = max);
 	}
 	cout << "max : " << max<<endl;
@@ -38,6 +39,7 @@ void problem3() {
 void problem4() {
 	getchar();
 	int cnt = 0;
+	cout << "문자열을 입력하세요:";
 	while (true) {
 		char x;
 		cin.get(x);
@@ -49,14 +51,11 @@ void problem4() {
 // 이상함
 void problem5() {
 	getchar();
-	while (1) {
+	for(int i=0;i<3;i++) {
 		char x[10];
 		cout << "문자열을 입력하세요 : ";
 		//getchar();
-		cin.getline(x, 10);
-		//cin.getline(x, strlen(x),'/n');
-		//cout << x << endl;
-		//cout << "len : " << strlen(x) << endl;
+		cin.getline(x, 10,'\n');
 		if (!strcmp(x, "yes")) { cout << "종료" << endl; break; }
 		//cout << "string : " << x<<endl;
 	}
@@ -73,22 +72,28 @@ void problem5() {
 void problem6() {
 	getchar();
 	int len=0;
+	char maxStr[100];
+	cout << ";를 끝으로 하는 문자열들을 입력하세요 : ";
 	for (int i = 0; i < 5; i++) {
 		char str[100] = { 0 };
 		cin.getline(str, 100, ';');
-		if (len < strlen(str)) len = strlen(str);
+		if (len < strlen(str)) { len = strlen(str); strcpy(maxStr, str); }
 		cout << i+1 << " : "  << str << endl;
 	}
 	cout << endl;
+	cout << "string : " << maxStr << endl;
 	cout << "len : " << len << endl;
 }
 //7. 이름, 주소, 나이를 입력받아 출력하세요.
 void problem7() {
 	char name[20], addr[20];
 	int age;
-	cout << "이름 : ";  cin >> name; cout << name << endl;
-	cout << "주소 : ";  cin >> addr; cout << addr << endl;
-	cout << "나이 : ";  cin >> age; cout << age << endl;
+	cout << "이름 : ";  cin >> name; 
+	cout << "주소 : ";  cin >> addr; 
+	cout << "나이 : ";  cin >> age; 
+	cout << name << endl;
+	cout << addr << endl;
+	cout << age << endl;
 
 }
 //8. 문자열을 하나 입력받고 문자열의 부분 문자열을 출력하세요
@@ -100,6 +105,7 @@ void problem7() {
 //hello
 void problem8() {
 	char str[20];
+	cout << "문자열을 입력하세요 : ";
 	cin >> str;
 	for (int i = 0; i < strlen(str); i++) {
 		for (int j = 0; j <= i; j++) {
