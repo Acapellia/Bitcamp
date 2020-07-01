@@ -12,7 +12,7 @@ using namespace std;
 #define PGDN 81
 #define ESC 27
 
-// 옆에 조그만 스크린
+// 생성위치
 #define BX 5
 #define BY 1
 
@@ -53,45 +53,52 @@ void main()
 
 	setcursortype(NOCURSOR);
 	randomize();
-	level = 6;
+	level = 3;
 
-	for (; 3;) {
+	for (; ;) {
 		clrscr();
+		// 벽과 빈공간 생성 -> 보드 초기화
 		for (x = 0; x < BW + 2; x++) {
 			for (y = 0; y < BH + 2; y++) {
 				board[x][y] = (y == 0 || y == BH + 1 || x == 0 || x == BW + 1) ? WALL : EMPTY;
 			}
 		}
 		DrawScreen();
-		nFrame = 20;
+		nFrame = 20;	
 		score = 0;
 		bricknum = 0;
-
+		//처음 떨어질 벽돌
 		MakeNewBrick();
-		for (; 1;) {
+		for (; ;) {
 			bricknum++;
+			// nbrick에 make를 하므로  brick(현재)로 복사해줌
 			memcpy(brick, nbrick, sizeof(brick));
+			// 다음에 떨어질 벽돌 만들기
 			MakeNewBrick();
+			// main 화면 옆에 있는 화면 그리기
 			DrawNext();
 			// 벽돌 생성위치
 			nx = BW / 2;
 			ny = 3;
-
+			// 현재 떨어지는 벽돌 계속 그려주기
 			PrintBrick(TRUE);
 			//생성위치까지 블럭이 차 있으면 게임 오버
 			if (GetAround(nx, ny) != EMPTY) break;
+			
 			nStay = nFrame;
-			for (; 2;) {
-				gotoxy(0, 0);
-				printf("stay %2d frame %2d brick %2d", nStay, nFrame, bricknum); delay(100);
+			for (; ;) {
+				//gotoxy(0, 0);
+				//printf("stay %2d frame %2d brick %2d", nStay, nFrame, bricknum); delay(100);
 				// stay가 계속 줄어 들다가 frame(일정시간)과 같아지면 한칸 내려옴
 				if (--nStay == 0) {
 					nStay = nFrame;
 					if (MoveDown()) break; // 블럭이 천천히 내려옴
 				}
 				if (ProcessKey()) break; // 플레이어 키 입력
+				//PrintInfo();
 				delay(1000 / 20); // 키 입력이 너무 빠르지 않게 딜레이
 			}
+
 			// 벽돌이 10개 생성될 때마다 frame이 1씩 줄어
 			// 벽돌이 머무는 시간이 줄어듬 (난이도 느낌)
 			if (bricknum % 10 == 0 && nFrame > 5) {
@@ -118,7 +125,12 @@ void DrawScreen()
 			puts(arTile[board[x][y]]);
 		}
 	}
-
+	for (x = 0; x < BW + 2; x++) {
+		for (y = 0; y < BH + 2; y++) {
+			gotoxy(80+x*3, y);
+			printf(" %2d ",board[x][y]);
+		}printf("\n");
+	}
 	gotoxy(50, 3); puts("Hexa Ver 1.0");
 	gotoxy(50, 5); puts("좌우:이동, 위:회전, 아래:내림");
 	gotoxy(50, 6); puts("공백:전부 내림, ESC:종료");
@@ -215,7 +227,7 @@ BOOL ProcessKey()
 void PrintBrick(BOOL Show)
 {
 	int i;
-
+	// Show(True - 벽돌그리기 False - 빈칸)
 	for (i = 0; i < 3; i++) {
 		gotoxy(BX + nx * 2, BY + ny + i);
 		puts(arTile[Show ? brick[i] : EMPTY]);
@@ -293,6 +305,7 @@ void TestFull()
 		if (Remove == FALSE) return;
 
 		// 제거 애니메이션
+		// 깜빡임
 		for (i = 0; i < 6; i++) {
 			for (y = 1; y < BH + 1; y++) {
 				for (x = 1; x < BW + 1; x++) {
@@ -305,14 +318,16 @@ void TestFull()
 			delay(150);
 		}
 
-		// 연속된 무늬 삭제
+		// 삭제된 무늬 위쪽에 있는것들을 모두 한칸씩 내림
 		for (y = 1; y < BH + 1; y++) {
 			for (x = 1; x < BW + 1; x++) {
 				if (board[x][y] != EMPTY && Mark[x][y] == TRUE) {
 					for (ty = y; ty > 1; ty--) {
+						gotoxy(22+(x*7), 80+ty);
+						printf("%d %d %d\n", x, ty, ty - 1);
 						board[x][ty] = board[x][ty - 1];
 					}
-					board[x][1] = EMPTY;
+					board[x][1] = EMPTY; //- 무쓸모(도대체 왜 있는지 모르겠음...)
 					count++;
 				}
 			}
@@ -361,4 +376,4 @@ void MakeNewBrick()
 		}
 	} while (nbrick[0] == nbrick[1] && nbrick[1] == nbrick[2] && nbrick[0] == nbrick[2]);
 }
-
+
