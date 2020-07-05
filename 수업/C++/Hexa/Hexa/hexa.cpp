@@ -125,12 +125,12 @@ void DrawScreen()
 			puts(arTile[board[x][y]]);
 		}
 	}
-	for (x = 0; x < BW + 2; x++) {
+	/*for (x = 0; x < BW + 2; x++) {
 		for (y = 0; y < BH + 2; y++) {
 			gotoxy(80+x*3, y);
 			printf(" %2d ",board[x][y]);
 		}printf("\n");
-	}
+	}*/
 	gotoxy(50, 3); puts("Hexa Ver 1.0");
 	gotoxy(50, 5); puts("좌우:이동, 위:회전, 아래:내림");
 	gotoxy(50, 6); puts("공백:전부 내림, ESC:종료");
@@ -323,8 +323,8 @@ void TestFull()
 			for (x = 1; x < BW + 1; x++) {
 				if (board[x][y] != EMPTY && Mark[x][y] == TRUE) {
 					for (ty = y; ty > 1; ty--) {
-						gotoxy(22+(x*7), 80+ty);
-						printf("%d %d %d\n", x, ty, ty - 1);
+						//gotoxy(22+(x*7), 80+ty);
+						//printf("%d %d %d\n", x, ty, ty - 1);
 						board[x][ty] = board[x][ty - 1];
 					}
 					board[x][1] = EMPTY; //- 무쓸모(도대체 왜 있는지 모르겠음...)
