@@ -1,0 +1,8 @@
+﻿  소스2.cpp
+C:\Users\Elite\Desktop\P200608\소스2.cpp(20,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\Elite\Desktop\P200608\소스2.cpp(27,4): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\P200608\소스2.cpp(43,5): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\P200608\소스2.cpp(44,5): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\P200608\소스2.cpp(50,5): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\P200608\소스2.cpp(51,5): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  P200608.vcxproj -> C:\Users\Elite\Desktop\P200608\Debug\P200608.exe
