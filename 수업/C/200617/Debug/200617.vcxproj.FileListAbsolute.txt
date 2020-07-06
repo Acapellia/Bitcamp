@@ -1,4 +1,0 @@
-C:\Users\Elite\Desktop\200617\Debug\200617.exe
-C:\Users\Elite\Desktop\200617\Debug\200617.pdb
-C:\Users\Elite\Desktop\Bitcamp\수업\200617\Debug\200617.exe
-C:\Users\Elite\Desktop\Bitcamp\수업\200617\Debug\200617.pdb

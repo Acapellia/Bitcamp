@@ -1,4 +1,0 @@
-C:\Users\Elite\Desktop\SharkGame\Debug\SharkGame.exe
-C:\Users\Elite\Desktop\SharkGame\Debug\SharkGame.pdb
-C:\Users\Elite\Desktop\Bitcamp\수업\SharkGame\Debug\SharkGame.exe
-C:\Users\Elite\Desktop\Bitcamp\수업\SharkGame\Debug\SharkGame.pdb

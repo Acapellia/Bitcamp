@@ -1,5 +1,0 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(467,5): warning MSB8028: 중간 디렉터리(Debug\)에 다른 프로젝트(AddressDivFile.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
-  address.c
-C:\Users\Elite\Desktop\200623\address.c(48,13): warning C4013: 'strlen'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-C:\Users\Elite\Desktop\200623\address.c(54,9): warning C4013: 'strncpy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-  200623.vcxproj -> C:\Users\Elite\Desktop\200623\Debug\200623.exe

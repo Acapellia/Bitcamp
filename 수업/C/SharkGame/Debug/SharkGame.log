@@ -1,5 +1,0 @@
-﻿  main.cpp
-C:\Users\Elite\Desktop\Bitcamp\수업\SharkGame\main.cpp(138,15): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\Elite\Desktop\Bitcamp\수업\SharkGame\main.cpp(173): warning C4715: 'hit_fish': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  turboc.c
-  SharkGame.vcxproj -> C:\Users\Elite\Desktop\Bitcamp\수업\SharkGame\Debug\SharkGame.exe

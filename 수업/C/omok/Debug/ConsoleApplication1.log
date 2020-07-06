@@ -1,3 +1,0 @@
-﻿  day4-team01.c
-day4-team01.obj : error LNK2005: _team01이(가) day4-team-omok.obj에 이미 정의되어 있습니다.
-C:\Users\Elite\Desktop\ConsoleApplication1\Debug\ConsoleApplication1.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
