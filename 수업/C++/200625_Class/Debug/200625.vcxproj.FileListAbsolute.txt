@@ -1,2 +1,2 @@
-C:\Users\Elite\Desktop\200625_Class\Debug\200625.exe
-C:\Users\Elite\Desktop\200625_Class\Debug\200625.pdb
+C:\Users\Elite\Desktop\200625\Debug\200625.exe
+C:\Users\Elite\Desktop\200625\Debug\200625.pdb

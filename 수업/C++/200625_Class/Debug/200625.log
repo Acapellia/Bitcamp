@@ -1,3 +1,2 @@
-﻿  05_operator.cpp
-05_operator.obj : error LNK2005: _main이(가) 04_header.obj에 이미 정의되어 있습니다.
-C:\Users\Elite\Desktop\200625_Class\Debug\200625.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
+﻿  27_ClassTemplate.cpp
+  200625.vcxproj -> C:\Users\Elite\Desktop\200625\Debug\200625.exe

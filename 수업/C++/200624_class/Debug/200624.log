@@ -1,0 +1,6 @@
+﻿  17_Polygon.cpp
+C:\Users\Elite\Desktop\200624\17_Polygon.cpp(129,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\200624\17_Polygon.cpp(133,101): error C3867: 'PointArray::GetSize': 비표준 구문입니다. '&'를 사용하여 멤버 포인터를 만드세요.
+C:\Users\Elite\Desktop\200624\17_Polygon.cpp(133,79): error C2512: 'PointArray::PointArray': 사용할 수 있는 적절한 기본 생성자가 없습니다.
+C:\Users\Elite\Desktop\200624\17_Polygon.cpp(135,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Elite\Desktop\200624\17_Polygon.cpp(159,1): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
