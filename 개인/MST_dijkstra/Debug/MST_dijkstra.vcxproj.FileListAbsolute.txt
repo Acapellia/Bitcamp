@@ -1,2 +1,0 @@
-C:\Users\Elite\Desktop\MST_dijkstra\Debug\MST_dijkstra.exe
-C:\Users\Elite\Desktop\MST_dijkstra\Debug\MST_dijkstra.pdb

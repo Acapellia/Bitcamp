@@ -1,8 +1,0 @@
-﻿  middle.c
-C:\Users\Elite\Desktop\200616_homework\middle.c(30,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200616_homework\middle.c(46,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200616_homework\middle.c(60,12): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200616_homework\middle.c(80,12): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200616_homework\middle.c(88,15): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Elite\Desktop\200616_homework\middle.c(26): warning C4716: 'getLcm': 값을 반환해야 합니다.
-  200616_homework.vcxproj -> C:\Users\Elite\Desktop\200616_homework\Debug\200616_homework.exe
