@@ -43,7 +43,7 @@ void main()
 	Calc* calc[4] = { new Add() , new Sub(), new Mul(), new Div() };
 	while (true) {
 		int sel = selNum();
-		int num;
+		int num, state = 0;;
 		int x=0, y=0;
 		
 		if (sel == 0) {
@@ -79,10 +79,13 @@ void main()
 			return;
 		}
 		else {
-			num = -99999;
+			state = 1;
 			cout << "다시 선택하세요" << endl;
 		}
-		if(num!=-99999) cout << "결과는 " << num << "입니다" << endl;
+		if (state != 0) { 
+			state = 0;
+			cout << "결과는 " << num << "입니다" << endl;
+		}
 		cout << endl;
 	}
 }

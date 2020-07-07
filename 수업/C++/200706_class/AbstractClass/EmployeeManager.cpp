@@ -27,18 +27,15 @@ void EmployeeManager::insertEmployee() {
 	cout << endl;
 	if (sel == 1) { 
 		emp[empNum] = new RegularEmployee();
-		emp[empNum]->inputEmployee();
 	}
 	else if (sel == 2) { 
 		emp[empNum] = new TempEmployee();
-		emp[empNum]->inputEmployee();
 	}
 	else if(sel==3){ 
 		emp[empNum] = new DailyEmployee();
-		emp[empNum]->inputEmployee();
 	}
-	else { cout << "잘 못 입력하셨습니다" << endl; }
-	empNum++;
+	else { cout << "잘 못 입력하셨습니다" << endl; return; }
+	emp[empNum++]->inputEmployee();
 }
 void EmployeeManager::showAllEmployee() {
 	if (empNum == 0) {
