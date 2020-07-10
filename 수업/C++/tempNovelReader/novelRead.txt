@@ -1,0 +1,34 @@
+while (!in.eof()) {
+		int len = 0;
+		int line = 2;
+		//cout << "< 제목 : " << novelName[num - 1] << " >" << endl << endl;
+		while (!in.eof()) {
+			string temp;
+			getline(in, temp); temp += " ";
+			content += temp;
+
+			while (content.size() > LineLength) {
+				//if (line > 25) break;
+				//cout << content.substr(0, LineLength) << endl;
+				nContent.push_back(content.substr(0, LineLength));
+				content = content.substr(LineLength, content.size());
+				line++;
+			}
+
+			//if (line > 25) break;
+
+			if (temp.size() == 1) {
+				//cout << content << endl;
+				nContent.push_back(content);
+				content.clear();
+				line++;
+			}
+
+			if (temp.size() > 2 && (temp[temp.size() - 2] == '.')) {
+				//cout << content << endl;
+				nContent.push_back(content);
+				content.clear();
+				line++;
+			}
+		}
+	}

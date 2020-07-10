@@ -1,0 +1,10 @@
+person 사람 5
+test 시험 10
+apple 사과 10
+game 게임 10
+novel 소설 7
+whisper 속삭이다 0
+queer 괴상한 0
+quaint 진기한 0
+dark 어둡다 10
+frequency 빈도수 0

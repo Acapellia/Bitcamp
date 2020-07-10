@@ -1,0 +1,43 @@
+void BookReader::funcInterpretSentence() {
+	showNovelName();
+	int novelNum = getSelNovel(); clear();
+	ifstream in(novelName[novelNum - 1]);
+	while (!in.eof()) {
+		int len = 0;
+		system("cls");
+		
+		color(YELLOW);
+		cout << "< 제목 : " << novelName[novelNum - 1] << " > Menu로 가기 : * 입력" << endl << endl;
+		
+		color(WHITE);
+		while (!in.eof()) {
+			string temp;
+			getline(in, temp);
+			len += temp.size();
+			cout << temp;
+			if (len > 0 && temp.size() == 0) { len = 0;  cout << endl << endl; break; }
+			if (temp.size() != 0 && temp[temp.size() - 1] == '.') { cout << endl << endl; break; }
+		}
+
+		color(GREEN);
+		cout << "\n<Follow Up>" << endl << endl;
+		string tempTyping; 
+		getline(cin, tempTyping);
+		if (tempTyping[tempTyping.size() - 1] == '*') {
+			system("cls"); return;
+		}
+		cout << endl << "==========================================================================\
+===========================================" << endl << endl;
+		
+		color(BLUE);
+		cout << "<해석>" << endl << endl;
+		string tempInterpret; 
+		getline(cin, tempInterpret);
+		if (tempInterpret[tempInterpret.size() - 1] == '*') {
+			system("cls"); return;
+		}
+		cout << endl << "==========================================================================\
+===========================================" << endl << endl;
+		clear();  
+	}
+}
