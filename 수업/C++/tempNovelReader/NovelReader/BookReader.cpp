@@ -5,10 +5,32 @@
 #include <string>
 #include <sstream>
 #include <windows.h>
+#include <set>
 #include "Turboc.h"
 #include "Function.h"
 #include "Voca.h"
+
 using namespace std;
+
+void BookReader::showMainScreen() {
+	mainScreen.push_back("\n\n\n\n\n\n");
+	mainScreen.push_back("		            CCCCCCCCCCCCCCCCC      EEEEEEEEEEEEEEEEE      OOOOOOOOOOOOOOOOO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EEEEEEEEEEEEEEEEE      OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CC                     EE                     OO             OO\n");
+	mainScreen.push_back("		            CCCCCCCCCCCCCCCCC      EEEEEEEEEEEEEEEEE      OOOOOOOOOOOOOOOOO\n\n");
+	mainScreen.push_back("\n			    		           <start with enter>\n");
+	for (int i = 0; i < mainScreen.size(); i++)
+		cout << mainScreen[i];
+}
 
 void BookReader::showMenu() {
 	cout << "----------Menu----------" << endl;
@@ -16,7 +38,6 @@ void BookReader::showMenu() {
 	cout << "2. Interpreting a sentence" << endl;
 	cout << "3. Open Vocabulary note" << endl;
 	cout << "4. Words Test" << endl;
-	cout << "5. Game" << endl;
 	cout << "0. Exit" << endl;
 	cout << "------------------------" << endl;
 }
@@ -24,9 +45,10 @@ void BookReader::showMenu() {
 void BookReader::readNovelName() {
 	ifstream in("Novel.txt");
 	while (!in.eof()) {
-		char name[100] = { 0 };
-		in.getline(name, 100);
-		novelName.push_back(name);
+		string name;
+		getline(in, name);
+		novelName.push_back(name + ".txt");
+		interpretName.push_back(name + "Interpret.txt");
 	}
 }
 
@@ -43,6 +65,7 @@ void BookReader::readVocaTxt() {
 		vocaMap.insert({ mean, make_pair(word, -1) });
 		vocaExist.insert({ word, 1 });
 	}
+	fclose(note);
 }
 
 void BookReader::addVocaToTxt(char word[30], char mean[30]) {
@@ -60,10 +83,10 @@ void BookReader::readNovelContent(string nName) {
 		string temp;
 		getline(in, temp); temp += " ";
 		content += temp;
-		while(content.size()>=LineLength) {
+		while (content.size() >= LineLength) {
 			nContent.push_back(content.substr(0, LineLength));
-			content = content.substr(LineLength, content.size()-1);
-		}	
+			content = content.substr(LineLength, content.size() - 1);
+		}
 		if (content.size() > 2 && content[content.size() - 2] == '.') {
 			nContent.push_back(content);
 			content.clear();
@@ -80,15 +103,17 @@ void BookReader::readNovelContent(string nName) {
 
 void BookReader::funcReadNovel() {
 	showNovelName();
-	int novelNum = getSelNovel();
-	string nName = novelName[novelNum - 1];
+	char novelNum = getSelNovel(); clear();
+	if ((novelNum - '0')==0) return;
+	string nName = novelName[(novelNum - '0') - 1];
 	int nowLine = 0;
 	int state = 0;
 	readNovelContent(nName);
 	while (true) {
 		system("cls");	color(WHITE);
+		if (nowLine > novelContent[nName].size()) { state = 1; break; }
 		for (int i = nowLine; i < nowLine + PageLine; i++) {
-			if (i >= novelContent[nName].size()) { state = 1; break; }
+			if (i >= novelContent[nName].size()) { break; }
 			stringstream stream(novelContent[nName][i]);
 			string temp;
 			while (stream >> temp) {
@@ -97,25 +122,48 @@ void BookReader::funcReadNovel() {
 				color(WHITE);
 			}cout << endl;
 		}
-		if (state==1 || nowLine >= novelContent[nName].size()) {
-			clear();  getchar();
-			system("cls"); gotoxy(50, 12);
-			color(RED);
-			cout << novelName[novelNum - 1] << "끝" << endl;
-			color(WHITE);
-			state = 1; break;
-		}
-		
+		color(BLUE);
+		gotoxy(0, 26); std::cout << "page -> " << nowPage;
 		while (true) {
 			printLine(false, "", 27);
 			color(YELLOW);
-			printLine(true, "e. 나가기 / s. 단어 검색 / f. 이전 페이지 / n. 다음 페이지 : ", 27);
+			printLine(true, "e. 나가기 / s. 단어 검색 / f. 이전 페이지 / n. 다음 페이지 / w. 원하는 페이지 : ", 27);
 			char sel; cin >> sel;
-			if (sel == 'e') { system("cls");  return; }
+			if (sel == 'e') { std::system("cls");  return; }
 			else if (sel == 's') { findWord(); }
-			else if (sel == 'f' && nowLine>=PageLine) { nowLine -= PageLine; break; }
-			else if (sel == 'n') { nowLine += PageLine; break; }
+			else if (sel == 'f' && nowLine >= PageLine) { nowLine -= PageLine; nowPage--; break; }
+			else if (sel == 'n') { 
+				nowLine += PageLine; 
+				nowPage++;
+				if (nowLine > novelContent[nName].size()) { state = 1;} break;
+			}
+			else if (sel == 'w') {
+				int page;
+				while (true) {	
+					cout << "원하는 페이지를 입력하세요(숫자로 입력하세요) : ";
+					cin >> page;
+					if (page<0 || page>novelContent[nName].size() / PageLine) {
+						std::cout << "해당 페이지가 없습니다." << endl;
+					}
+					else { break; }
+				}
+				if (page > nowPage) { 
+					nowLine += (page - nowPage) * PageLine; nowPage += (page - nowPage); 
+				}
+				else if (page < nowPage) {
+					nowLine -= (nowPage - page) * PageLine; nowPage -= (nowPage - page);
+				}
+				break;
+			}
 		}
+		if (state == 1 || nowLine >= novelContent[nName].size()) {
+			clear();
+			system("cls"); gotoxy(50, 12);
+			color(RED);
+			cout << novelName[(novelNum-'0') - 1] << "끝" << endl;
+			color(WHITE);
+			state = 1; break;
+		}		
 	}
 	getchar();
 	system("cls");
@@ -124,18 +172,19 @@ void BookReader::funcReadNovel() {
 void BookReader::showNovelName() {
 	for (int i = 0; i < novelName.size(); i++) {
 		cout << i + 1 << " : " << novelName[i] << endl;
-	}cout << endl;
+	}
+	cout << "0 : exit" << endl << endl;
 }
 
-int BookReader::getSelNovel() {
-	int sel;
+char BookReader::getSelNovel() {
+	char sel;
 	cout << "Select Novel : ";
 	cin >> sel;
 	return sel;
 }
 
-int BookReader::getSelmenu() {
-	int sel;
+char BookReader::getSelmenu() {
+	char sel;
 	cout << "Select Menu : ";
 	cin >> sel;
 	cout << endl;
@@ -147,7 +196,7 @@ void BookReader::findWord() {
 		char searchState = 0;
 		printLine(false, "", 27);
 		printLine(true, "단어를 검색하시겠습니까?(yes : 1 / no : 2) : ", 27);
-		cin >> searchState;
+		cin >> searchState; clear();
 		if (searchState == '1') {
 			char word[100] = { 0 };
 			char mean[100] = { 0 };
@@ -165,13 +214,11 @@ void BookReader::findWord() {
 			else {
 				char tword[30] = { 0 };
 				searchWord2(word);
+				clear(); cin.getline(mean, 100);
 				addVocaToTxt(word, mean);
+				voca.push_back(Voca(word, mean, 0));
 				vocaExist.insert({ word, 1 });
 				printLine(false, " ", 27);
-				strcpy(tword, word);
-				printLine(true, strcat(tword, "의 뜻 : "), 27);
-				clear();
-				cin.getline(mean, 100);
 			}
 			printLine(false, " ", 28);
 			printLine(true, strcat(word, mean), 28);
@@ -190,33 +237,36 @@ void BookReader::readNovelInterpret(string nName) {
 	vector<string> interpret;
 
 	while (!in.eof()) {
-		string temp; 
+		string temp;
 		getline(in, temp);
 		//cout << temp<<endl;
 		interpret.push_back(temp);
 	}
 	novelInterpret.insert({ nName, interpret });
+	in.close();
 }
-void BookReader::writeNovelInterpret(string nName) {
-	fstream out(nName);
+
+void BookReader::writeNovelInterpret(string iName) {
+	fstream out(iName);
+	//cout << iName << endl;
 	vector<string> interpret;
 
-	for (int i = 0; i < novelInterpret["Interpret.txt"].size(); i++) {
-		out << novelInterpret["Interpret.txt"][i] << endl;
+	for (int i = 0; i < novelInterpret[iName].size(); i++) {
+		out << novelInterpret[iName][i] << endl;
 	}
 }
+
 void BookReader::funcInterpretSentence() {
 	showNovelName();
-	int novelNum = getSelNovel(); clear();
-	string nName = novelName[novelNum-1];
-	int nowLine = 0 , pageNum=0; 
-	
+	char novelTempNum = getSelNovel(); clear();
+	int novelNum = novelTempNum - '0';
+	if (novelNum == 0) return;
+	string nName = novelName[novelNum - 1];
+	string iName = interpretName[novelNum - 1];
+	int nowLine = 0, pageNum = 0;
 	readNovelContent(nName);
-	readNovelInterpret("Interpret.txt");
-	/*cout << novelInterpret["Interpret.txt"].size()<<endl;
-	for (int i = 0; i<novelInterpret["Interpret.txt"].size();i++) {
-		cout << novelInterpret["Interpret.txt"][i] << endl;
-	}*/
+	readNovelInterpret(iName);
+
 	while (true) {
 		std::system("cls");
 		color(YELLOW);
@@ -228,7 +278,7 @@ void BookReader::funcInterpretSentence() {
 			if (len <= 1) { nowLine++;  continue; }
 			cout << novelContent[nName][nowLine] << endl;
 			if (len < LineLength) { nowLine++; break; }
-			if (len>2 && novelContent[nName][nowLine][len-2] == '.') { nowLine++; break; }
+			if (len > 2 && novelContent[nName][nowLine][len - 2] == '.') { nowLine++; break; }
 			nowLine++;
 		}
 
@@ -237,79 +287,92 @@ void BookReader::funcInterpretSentence() {
 		string tempTyping;
 		getline(cin, tempTyping);
 
-		if (tempTyping.size()>0 && tempTyping[tempTyping.size() - 1] == '*') {
+		if (tempTyping.size() > 0 && tempTyping[tempTyping.size() - 1] == '*') {
 			std::system("cls"); break;
 		}
 		cout << endl << "==========================================================================\
 ===========================================" << endl << endl;
-		
+
 		color(BLUE);
 		cout << "<해석>" << endl << endl;
 		string tempInterpret;
 		//cout << "vec : " << novelInterpret["Interpret.txt"].size() << "now : " << pageNum << endl;
-		if (novelInterpret["Interpret.txt"].size() > pageNum && novelInterpret["Interpret.txt"][pageNum].size()==0) {
+		if (novelInterpret[iName].size() > pageNum && novelInterpret[iName][pageNum].size() == 0) {
 			getline(cin, tempInterpret);
-			novelInterpret["Interpret.txt"][pageNum] = tempInterpret;
+			novelInterpret[iName][pageNum] = tempInterpret;
 		}
-		else if (novelInterpret["Interpret.txt"].size()<=pageNum) {
+		else if (novelInterpret[iName].size() <= pageNum) {
 			getline(cin, tempInterpret);
-			novelInterpret["Interpret.txt"].push_back(tempInterpret);
+			novelInterpret[iName].push_back(tempInterpret);
 		}
 		else {
-			cout << novelInterpret["Interpret.txt"][pageNum] << endl;
+			cout << novelInterpret[iName][pageNum] << endl;
 		}
 		if (tempInterpret.size() > 0 && tempInterpret[tempInterpret.size() - 1] == '*') {
 			std::system("cls"); return;
 		}
 		cout << endl << "==========================================================================\
 ===========================================" << endl << endl;
-		pageNum++; clear();
+
+		while (true) {
+			cout << "해석을 수정하시겠습니까?(y/n) : ";
+			int ty = wherey();
+			string sel;
+			//clear();
+			getline(cin, sel);
+			while (sel == "") { gotoxy(33, ty); getline(cin, sel); break; }
+			if (sel[0] == 'y') {
+				string temp;
+				cout << "<해석 수정>" << endl;
+				getline(cin, temp);
+				novelInterpret[iName][pageNum] = temp;
+				writeNovelInterpret(iName);
+			}
+			else if (sel[0] == 'n') { break; }
+		}
+		pageNum++; 
 	}
-	writeNovelInterpret("Interpret.txt");
+	writeNovelInterpret(iName);
 }
+
 
 // 3. function Voca Note
 void BookReader::funcVocaNote() {
 	while (true) {
 		cout << "Voca" << endl << endl;
-		//if (voca.size() == 0) makeVocaNote();
 		showVocaMenu();
-		int sel = getSelVocaMenu();
-		if (sel == 0) { system("cls"); return; }
+		char sel = getSelVocaMenu(); clear();
+		if (sel == '0') { std::system("cls"); return; }
+		else if (!(sel == '1' || sel == '2' || sel == '3')) { continue; }
 		while (true) {
 			showVocaContent(sel);
-			int editSel;
+			char editSel; 
 			cout << endl << "Contents 수정(y=1,n=0) : ";
-			cin >> editSel;
-			if (editSel == 0) { break; }
+			cin >> editSel; clear();
+			if (editSel == '0') { break; }
+			else if (sel == '3') { continue; }
 			char tword[30] = { 0 };
 			int vScore = 0;
 			string type = "En";
-			if (sel == 1) {
+			if (sel == '1') {
 				cout << "<Known Voca>로 변경할 단어 입력 : ";
 				cin >> tword;
 				vScore = 10;
 			}
-			if (sel == 2) {
+			if (sel == '2') {
 				cout << "<Unknown Voca>로 변경할 단어 입력 : ";
 				cin >> tword;
 				vScore = 5;
 			}
 			editVocaScore(type, tword, vScore);
 		}
-		clear();
-		system("cls");
+		writeVocaTxt();
+		std::system("cls");
 	}
 }
 
-// it => map
-// it->fist => key (string)
-// it->second => value (pair<string,int>)
-// it->second.first = pair.first (string)
-// it->second.second = pair.second (int)
-
 void BookReader::showVocaMenu() {
-	system("cls");
+	std::system("cls");
 	cout << "---------Menu---------" << endl;
 	cout << "1. Unknown" << endl;
 	cout << "2. Known" << endl;
@@ -318,28 +381,27 @@ void BookReader::showVocaMenu() {
 	cout << "----------------------" << endl;
 }
 
-int BookReader::getSelVocaMenu() {
-	int sel;
+char BookReader::getSelVocaMenu() {
+	char sel;
 	cout << endl << "메뉴를 선택하세요 : ";
 	cin >> sel;
 	cout << endl;
 	return sel;
 }
 
-void BookReader::showVocaContent(int sel) {
-	system("cls");
+void BookReader::showVocaContent(char sel) {
+	std::system("cls");
 	for (int i = 0; i < voca.size(); i++) {
-		if (sel == 1 && voca[i].getScore() < 10)
+		if (sel == '1' && voca[i].getScore() < 10)
 			cout << voca[i].getWord() << " - " << voca[i].getMean() << endl;
-		else if (sel == 2 && voca[i].getScore() >= 10)
+		else if (sel == '2' && voca[i].getScore() >= 10)
 			cout << voca[i].getWord() << " - " << voca[i].getMean() << endl;
-		else if (sel == 3)
+		else if (sel == '3')
 			cout << voca[i].getWord() << " - " << voca[i].getMean() << endl;
 	}
 }
 
 void BookReader::editVocaScore(string type, char tword[30], int vScore) {
-	FILE* out = fopen("Voca.txt", "wt");
 	int i;
 	for (i = 0; i < voca.size(); i++) {
 		if (type == "En" && !strcmp(voca[i].getWord().c_str(), tword)) {
@@ -349,12 +411,125 @@ void BookReader::editVocaScore(string type, char tword[30], int vScore) {
 			break;
 		}
 	}
-	voca[i].setScore((vScore == 1 || vScore == -1) ? voca[i].getScore() + vScore : vScore);
-	for (i = 0; i < voca.size(); i++) {
+	if (i == voca.size()) { cout << "해당 단어가 txt에 없습니다" << endl;  clear(); getchar(); return; }
+	voca[i].setScore((vScore <= 3 || vScore == -1) ? voca[i].getScore() + vScore : vScore);
+}
+
+void BookReader::writeVocaTxt() {
+	FILE* out = fopen("Voca.txt", "wt");
+	for (int i = 0; i < voca.size(); i++) {
 		fprintf(out, "%s %s %d", voca[i].getWord().c_str(), voca[i].getMean().c_str(), voca[i].getScore());
 		if (i != voca.size() - 1) fprintf(out, "\n");
 	}
+	fclose(out);
 }
-//4 function Voca Test
+
+//4. function Voca Test
+void BookReader::funcVocaTest() {
+	std::system("cls");
+	string proBlem[50];
+	string ansWer[50];
+	string inputansWer[50];
+	int seqArr[50] = { 0 };
+	int scoreArr[50] = { 0 };
+	int correctScore = 0, wrongScore = 0;
+	int num = 0;
+	int rseqNum = 0; // 문제 낸 순서
+
+	srand((unsigned int)time(NULL));
+	while (true) {
+		system("cls");
+		cout << "문제 개수를 입력하세요(50개 이하 / 숫자 아닐 시 터짐 주의) : ";
+		cin >> num;
+		if (num <= 50) { break; }
+	}
+	for (int i = 0; i < num; i++) {
+		int randEK = rand() % 2;						// EN or KR?
+		int freR;
+		while (true){
+			rseqNum = rand() % voca.size(); // txt파일에 있는 단어 중에 랜덤으로 선택
+			freR = rand() % (voca[rseqNum].getScore() + 1); // 출제 빈도 -> 얼마나 해당 단어를 아는지
+			if (freR < 10 - voca[rseqNum].getScore()) { break; } // 아는 단어 자주 안나옴
+		}
+		seqArr[i] = rseqNum;
+
+		if (randEK == 0){
+			cout << voca[rseqNum].getWord() << endl;
+			proBlem[i] = voca[rseqNum].getWord();
+			ansWer[i] = voca[rseqNum].getMean();
+		}
+		else{
+			cout << voca[rseqNum].getMean() << endl;
+			proBlem[i] = voca[rseqNum].getMean();
+			ansWer[i] = voca[rseqNum].getWord();
+		}
+		scoreArr[i] = voca[rseqNum].getScore();
+		voca[rseqNum].setProFre(voca[rseqNum].getProFre() + 1);
+	}
+	getchar();
+	for (int i = 0; i < num; i++)
+	{
+		while (true) { // 라인 지키기 -> 답 입력 안하고 넘어가려고 하면 다시 원래 라인으로 
+			gotoxy(20, i + 1);
+			getline(cin, inputansWer[i]);
+			if (inputansWer[i] != "") {
+				break;
+			}
+		}
+
+		if (ansWer[i] == inputansWer[i]){  // 모르는 단어 정답일수록 점수가 높게
+			voca[seqArr[i]].setAnsFre(voca[seqArr[i]].getAnsFre() + 1); 	
+			correctScore += (10 - scoreArr[i]);
+		}
+		else { wrongScore += (10 - scoreArr[i]); }
+		
+		gotoxy(20, i + 2);
+	}
+	std::system("cls");
+	gotoxy(0, 0);
+
+	cout << "테스트 점수 : " << (correctScore * 100) / (correctScore + wrongScore) << endl << endl;
+	cout << "<정답율>" << endl;
+	cout << "-------------------------\n";
+
+	for (int i = 0; i < voca.size(); i++)
+	{
+		if (voca[i].getProFre() == 0) { continue; }
+		cout << voca[i].getWord() << "의 출제 횟수 : " << voca[i].getProFre() << endl;
+		cout << voca[i].getWord() << "의 정답율 : ";
+		cout << ((double)voca[i].getAnsFre() / voca[i].getProFre()) * 100 << "%" << endl;
+		cout << "-------------------------\n";
+	}
+	
+	getchar();
+	std::system("cls");
+
+	// 점수 변환
+	int vocSize = voca.size();
+
+	for (int i = 0; i < vocSize; i++){
+		if (voca[i].getProFre() != 0){
+			double tempScore = ((double)voca[i].getAnsFre() / voca[i].getProFre()) * 100;
+			if (voca[i].getProFre() < 3) { // 문제 출제 회수가 3번이 안되면
+				tempScore = voca[i].getScore() + 1 >= 9 ? 9 : voca[i].getScore() + 1;
+			}
+			else if (tempScore == 0) {
+				tempScore = voca[i].getScore() - 1 <= 0 ? 0 : voca[i].getScore() - 1;
+			}
+			else if (tempScore>= 30){ // 정답율이 30퍼이하
+				tempScore = voca[i].getScore() + 1 >= 9 ? 9 : voca[i].getScore() + 1;
+			}
+			else if (tempScore >= 70){ // 정답율이 70퍼이하
+				tempScore = voca[i].getScore() + 2 >= 9 ? 9 : voca[i].getScore() + 2;
+			}
+			else if (tempScore == 100){ // 정답율이 100퍼
+				tempScore = voca[i].getScore() + 3 >= 9 ? 9 : voca[i].getScore() + 3;
+			}
+			voca[i].setScore((int)tempScore);
+		}
+	}
+	// txt파일에 점수 반영
+	writeVocaTxt();
+}
 
 

@@ -1,5 +1,5 @@
-novel1.txt
-Little Princess.txt
-abc.txt
-def.txt
-ghi.txt
+novel1
+Little Princess
+abc
+def
+ghi
