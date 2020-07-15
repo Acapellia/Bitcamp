@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "4zBF89Gcq1RJZWsDVsapZPev8i1uE3zu+UiazWFKNZmzTjqJ6dmUSiWinds91wQiKWWktcVb2KKPqtvEhOVXHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Bitcamp\\수업\\C#\\200715_preparation\\_23_DLL_CalcLib\\_23_DLL_CalcLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
