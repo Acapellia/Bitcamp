@@ -10,3 +10,8 @@
 # ---- C# ----
 **/bin/
 **/obj/
+**/Properties/
+**/*.csproj
+
+# -unity-
+**/Unity/
