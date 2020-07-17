@@ -12,7 +12,7 @@
 **/obj/
 **/Properties/
 **/*.csproj
-**/*.config
+**/App.config
 
 # -unity-
 **/Unity/
