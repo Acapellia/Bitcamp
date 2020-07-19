@@ -5,7 +5,7 @@
 **/*.vcxproj.user
 **/debug/
 **/.vs/
-**/*.zip
+
 
 # ---- C# ----
 **/bin/
@@ -16,3 +16,6 @@
 
 # -unity-
 **/Unity/
+
+# exception
+**/*.zip
