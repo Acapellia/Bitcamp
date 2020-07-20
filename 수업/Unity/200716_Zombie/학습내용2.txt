@@ -1,0 +1,67 @@
+# readme
+
+<내용>
+이전의 Zombie게임에 네트워크를 추가하기
+
+<학습 내용>
+# 네트워크 프로그래밍의 개념
+
+- 로컬과 리모트의 구분 (플레이어가 4명이면  게임에서 플레이어 캐릭터는 총 16개이다.)
+(A{La,Rb,Rc,Rd} / B{Ra,Lb,Rc,Rd} / C{Ra,Rb,Lc,Rd} / D{Ra,Rb,Rc,Ld}) - L : Local / R : Remote
+
+- 네트워크 권한에 따라 코드를 분리하는 방법 (Object가 Local일 때만 동작하고 Remote Object는 동작안함)
+
+- 클라이언트 사이에서 수치가 동기화되는 흐름 (Local Object La가 동작하면 그 내용을 다른 게임월드의 Ra에도 반영)
+
+- 게임 서버의 종류 
+* 전용 서버 : 전용서버(Host)는 플레이어로서 게임에 참여하지 않고 네트워크 서버를 유지하기 위해서만 사용
+* 리슨 서버 : 하나의 클라이언트가 호스트 역할을 맡아서 함
+* P2P : 특정 호스트가 존재하지 않고 클라이언트 각각이 자신의 연산을 실행하고 다른 클라이언트에 전달
+
+- Remote Procedure Call(원격 프로시저 호출)
+* 클라이언트 B가 발사 버튼 누름
+* 클라이언트 B -> 호스트 A로 RPC(b.shot())전달
+* 호스트 A에서 b.shot() 실행
+* 호스트 A -> 클라이언트 A,B,C,D에게 RPC(b.shotEffect())전달
+* 클라이언트 A,B,C,D의 각 게임 월드에 존재하는 b가 shotEffect()를 실행
+
+- 포톤 룸- 여러 클라이언트가 네트워크를 통해 하나의 세션에 모였을 때 그 모인 네트워크의 가상 공간
+
+- Photon Unity Network 준비하기
+Asset Store -> PUN 2 -Free
+
+- 로비를 만들고 매치메이킹을 구현하는 방법
+ConnetUsingSetting() -> 마스터 접속시도
+GameVersion = gameVersion -> 버전 설정
+bool IsConnected - 마스터에 접송 중인지 확인하는 변수
+JoinRandomRoom() - 룸에 접속
+CreateRoom(name, new RoomOptions {player num}) - name이라는 이름으로 num명 참여 가능한 새로운 방 생성
+LoadLevel(Scene) = Scene이라는 씬 열기
+Photon View(필수) - Photon Transform View와 Photon Animator View를 가짐, IsMine 프로퍼티 -> local 오브젝트인지
+Photon Transform View(position, rotatation, scale)등을 동기화
+Photon Animator View(Animator Layer와 Synchronize Parameter)를 동기화
+동기화를 해야하는 요소들을 가진 함수에 [PunRPC] 키워드를 붙임, IsMine으로 local인지 확인하고 local에만 변화를 적용 -> 동기화를 통해 remote에 적용
+
+<추가로 학습 할 것>
+- remote와 local에 대한 이해
+- 동기화를 해야할 것과 아닌것에 대한 명확한 구분
+- 배운 내용 전체 복습
+- 네트워크를 사용하는 프로그램 직접 구현해보기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<기타>
+해당 프로젝트는 (레트로의 유니티 게임 프로그래밍 에센스-이제민 지음-한빛미디어)의 예제를 따라 해 본 것입니다.
+프로젝트 및 Asset들은 본 책에 소개된 대로 저작권이 있습니다.

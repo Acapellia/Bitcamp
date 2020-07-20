@@ -1,0 +1,42 @@
+# readme
+
+<내용>
+플레이어는 체력을 가지고 있고 총을 쏴서 좀비를 죽인다.
+좀비는 일정시간마다 정해진 spawn장소에서 생성되며 플레이어에게 접근한다.
+좀비는 체력과 공격력을 가지고 있으며 플레이어를 공격한다.
+일정시간마다 아이템(체력회복, 총알, 코인)이 생성되며 5초 후 사라진다.
+
+<학습 내용>
+# 20.07.16
+- 라이트맵 / 글로벌 일루미네이션 설정
+- Animator 전이 조건(bool, trigger 등)
+- Animation Layer로 Animation 겹쳐 사용하기
+- Avatar Mask
+- 시네머신 추적 카마라(브레인 카메라, 가상 카메라)
+- coroutine
+- laycast
+- out 키워드
+- 손의 위치가 물건의 위로 가도록 하기 (IK-역운동 / FK-전진운동)
+- 컴포넌트 활성화(Gameobect.SetActive())
+- 부모 함수 실행 (base.func())
+- Action(입출력 없는 델리게이트)과 Event(class외부에서 실행 불가능한 델리게이트)
+- 플레이어 체력 만들기
+- 몬스터 AI를 위한 네비게이션 시스템(네비메시)
+- OnTriggerStay() - 충돌하는 동안 물리 갱신 주기에 맞춰 실행
+- Game Manager를 위한 싱글톤 디자인 패턴
+
+# 20.07.17
+- Random.insideUnitSphere - 반지름이 1인 구 안에서 랜덤한 한 점 반환 
+- NavMesh.SamplePosition(Position, NevMeshHit, distance, NavMesh.AllAread) - Position을 중심으로 distance 반경 내에서 가장 가까운 내비메시 위의 한점 
+- Post Processing
+- Camera Rendring Path - deferred (라이팅 연산을 미뤄서 함)
+- Camera - Post Process Layer
+- GameObject - Post-Process Volume
+
+<추가로 학습 할 것>
+전반적으로 처음 학습한 것이 많아 (NevMesh, laycast, Camera, light setting, post process 등) 꾸준히 설정들을 확인하고 응용법을 알아갈 예정
+
+
+<기타>
+해당 프로젝트는 (레트로의 유니티 게임 프로그래밍 에센스-이제민 지음-한빛미디어)의 예제를 따라 해 본 것입니다.
+프로젝트 및 Asset들은 본 책에 소개된 대로 저작권이 있습니다.

@@ -1,0 +1,5 @@
+# readme
+
+<학습 내용>
+Global transform과 Local transform의 동작 방식
+
