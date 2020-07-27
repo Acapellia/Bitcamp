@@ -1,0 +1,29 @@
+# readme
+
+<내용>
+철로를 따라 움직이는 지하철 만들기
+
+<학습 내용>
+object및 카메라 움직이기
+방향 벡터 이해하기
+object를 cube로 만든 rail을 따라 움직이게 하기
+카메라가 object의 뒤를 따라 움직이게 하기
+
+<추가로 학습 할 것>
+Lerp하게 3점을 기준으로 곡선 그리기
+Asset Store에 road creator, Spline 등 Asset들 사용해보기
+
+<느낀점>
+큐브로 rail을 만들어 커브를 만들 경우 위를 지나가는 object가 부드럽게 움직이기 힘듬
+위치 설정을 잘 해주거나 계산식으로 코드가 복잡해짐
+
+
+
+
+
+
+
+<기타>
+
+RailMat : rgb(1A2933)
+SubwayMat : rgb(F0F8FF)

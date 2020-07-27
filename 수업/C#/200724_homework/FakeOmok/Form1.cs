@@ -190,6 +190,7 @@ namespace FakeOmok {
             for(int i = 0; i < 20; i++) {
                 for(int j = 0; j < 20; j++) {
                     stoneExist[i][j] = false;
+                    stoneColor[i][j] = 0;
                 }
             }
             color = -1;

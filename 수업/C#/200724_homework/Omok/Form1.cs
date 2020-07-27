@@ -69,6 +69,15 @@ namespace Omok {
                 e.Graphics.DrawLine(penB, margin, i * size + margin, 800, i * size + margin);
                 e.Graphics.DrawLine(penB, i * size + margin, margin, i * size + margin, 800);
             }
+
+            // point
+            int[] ploc = new int[] { 3, 10, 16 };
+            for(int i = 0; i < 3; i++) {
+                for(int j = 0; j < 3; j++) {
+                    e.Graphics.FillEllipse(Brushes.Black, ploc[i] * size + margin - 5, ploc[j] * size + margin - 5, 10, 10);
+                }
+            }
+            
             // stone
             for(int i = 0; i < stone.Count; i++) {
                 int x = stone[i].x, y = stone[i].y;
@@ -84,40 +93,34 @@ namespace Omok {
                     e.Graphics.DrawEllipse(new Pen(Color.Black, 2), (x * size) + margin / 2, (y * size) + margin / 2, size, size);
                 }
             }
-            // point
-            e.Graphics.FillEllipse(Brushes.Black, 3 * size + margin - 5, 3 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 10 * size + margin - 5, 3 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 16 * size + margin - 5, 3 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 3 * size + margin - 5, 10 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 10 * size + margin - 5, 10 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 16 * size + margin - 5, 10 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 3 * size + margin - 5, 16 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 10 * size + margin - 5, 16 * size + margin - 5, 10, 10);
-            e.Graphics.FillEllipse(Brushes.Black, 16 * size + margin - 5, 16 * size + margin - 5, 10, 10);
 
             // state
             if(color == -1) {
                 e.Graphics.FillEllipse(Brushes.Black, Width - margin - 20, 0, size, size);
+                e.Graphics.DrawEllipse(new Pen(Color.White, 2), Width - margin - 20, 0, size, size);
             }
             else if(color == 1) {
                 e.Graphics.FillEllipse(Brushes.White, Width - margin - 20, 0, size, size);
+                e.Graphics.DrawEllipse(new Pen(Color.Black, 2), Width - margin - 20, 0, size, size);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            // back
+            // back image
             for(int i = 0; i < 9; i++) {
                 string path = "../../natural";
                 path += (i + ".jpg");
                 Console.WriteLine(path);
                 image[i] = Image.FromFile(path);
             }
+            // back music
             putSound = new SoundPlayer();
             putSound.SoundLocation = "../../목탁.wav";
             endSound = new SoundPlayer();
             endSound.SoundLocation = "../../닭울음.wav";
             existSound = new SoundPlayer();
             existSound.SoundLocation = "../../윈도우_클릭.wav";
+
             // omok
             this.Width = 860;
             this.Height = 880;
@@ -128,6 +131,7 @@ namespace Omok {
                 stoneColor[i] = new int[22];
             }
         }
+
         bool checkLR(int x, int y) {
             int cnt = 1;
             // 가로
