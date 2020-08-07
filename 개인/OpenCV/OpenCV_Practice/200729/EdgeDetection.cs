@@ -10,7 +10,7 @@ namespace _200729 {
         static void Main(string[] args) {
             Mat src = new Mat("../../../../wintry.jpg");
             Mat blur = new Mat();
-
+            
             Mat sobel = new Mat();
             Mat scharr = new Mat();
             Mat laplacian = new Mat();

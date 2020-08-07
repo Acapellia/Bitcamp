@@ -5,7 +5,7 @@ using OpenCvSharp;
 namespace _200727 {
     class ImageColor {
         static void Main(string[] args) {
-            Mat src = Cv2.ImRead("../../../../desert.jpg");
+            Mat src = Cv2.ImRead("../../../../Images/desert.jpg");
             Mat dst = new Mat(src.Size(), MatType.CV_8UC1); // unsigned int8 channel 1
 
             Cv2.CvtColor(src, dst, ColorConversionCodes.BGR2GRAY); // gray

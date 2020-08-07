@@ -13,7 +13,7 @@ namespace _200729 {
 // 세그먼테이션(Segmentation) 이란 이미지에서 각각의 픽셀들을 분류해 그룹화하는 것을 의미합니다.
     class ContoursDetection {
         static void Main(string[] args) {
-            Mat src = new Mat("../../../../hex.jpg");
+            Mat src = new Mat("../../../../Images/hex.jpg");
             Mat yellow = new Mat();
             Mat dst = src.Clone();
 

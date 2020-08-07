@@ -62,6 +62,7 @@ namespace Omok {
         private void Form1_Paint(object sender, PaintEventArgs e) {
             Pen penB = new Pen(Brushes.Black, 1);
             Pen penW = new Pen(Brushes.White, 2);
+
             // board
             for(int i = 0; i < 20; i++) {
                 e.Graphics.DrawLine(penW, margin, i * size + margin, 800, i * size + margin);
@@ -219,13 +220,16 @@ namespace Omok {
             }
             return false;
         }
+
         private bool check(int x, int y) {
             bool state = false;
             string colorText;
+
             if(checkLR(x, y)) { state = true; }
-            if(checkUD(x, y)) { state = true; }
-            if(checkDiaL(x, y)) { state = true; }
-            if(checkDiaR(x, y)) { state = true; }
+            else if(checkUD(x, y)) { state = true; }
+            else if(checkDiaL(x, y)) { state = true; }
+            else if(checkDiaR(x, y)) { state = true; }
+
             if(state) {
                 Invalidate();
                 endSound.Play();

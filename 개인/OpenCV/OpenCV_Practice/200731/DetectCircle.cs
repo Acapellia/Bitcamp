@@ -5,10 +5,10 @@ using OpenCvSharp;
 namespace _200731 {
     class DetectCircle {
         static void Main(string[] args) {
-            Mat src = new Mat("../../../../Images/birds_ball.jpg");
+            Mat src = new Mat("../../../../Images/cats.jpg");
             Mat dst = new Mat();
             Cv2.CvtColor(src, dst, ColorConversionCodes.BGR2GRAY);
-            Cv2.ImShow("GrayScale", dst);
+            //Cv2.ImShow("GrayScale", dst);
             Cv2.GaussianBlur(dst, dst, new Size(9, 9), 1, 1, BorderTypes.Default); // 1 : x.y표준 편차
             Cv2.ImShow("GaussianBlur", dst);
             //minDist – 검출한 원의 중심과의 최소거리. 값이 작으면 원이 아닌 것들도 검출이 되고, 너무 크면 원을 놓칠 수 있음.
@@ -17,7 +17,7 @@ namespace _200731 {
             //minRadius – 원의 최소 반지름.
             //maxRadius – 원의 최대 반지름.
 
-            CircleSegment[] circles = Cv2.HoughCircles(dst, HoughMethods.Gradient, 1, 100, 150, 50, 30, 80);
+            CircleSegment[] circles = Cv2.HoughCircles(dst, HoughMethods.Gradient, 1, 100, 150, 50, 50, 100);
 
             //Console.WriteLine(circles.Length);
             foreach(CircleSegment circle in circles) {
