@@ -71,7 +71,7 @@ namespace teamproject {
             this.Width = 965;
             this.Height = 865;
             this.isRecv = true;
-	talkSound  = new SoundPlayer("../../Talk.wav");
+	        talkSound  = new SoundPlayer("../../Talk.wav");
             // Server와 통신하기 위한 스레드 생성
             this.tRecv = new Thread(new ThreadStart(ThreadRecv));
             this.tRecv.IsBackground = true;
@@ -108,14 +108,6 @@ namespace teamproject {
                     Console.WriteLine(data);
                     Console.WriteLine(answer);
                     switch(answer) {
-                        /*case "Login":
-                            for(int i = 0; i < parse.Length; i += 2) {
-                                if(parse[i] == "Data")
-                                    MessageBox.Show(parse[i + 1]);
-                                else if(parse[i] == "UserName")
-                                    userName = parse[i + 1];
-                            }
-                            break;*/
                         case "Tab2":
                             menteeName = new List<string>();
                             menteeImage = new List<Image>();
@@ -136,7 +128,6 @@ namespace teamproject {
                                             idx = j;
                                     }
                                     chatName = parse[i + 1].Substring(1, (idx - 1));
-                                    //Console.WriteLine(chatName);
                                     if(chatName == userName) {
                                         AddChatLogBox($"--> {parse[i + 1]}");
                                     }
@@ -166,7 +157,7 @@ namespace teamproject {
                                 }
                                 else if (parse[i] == "EnterChat")
                                 {
-			talkSound.Play();
+			                        talkSound.Play();
                                     AddChatLogBox($"<-- {parse[i + 1]}");
                                 }
                             }
