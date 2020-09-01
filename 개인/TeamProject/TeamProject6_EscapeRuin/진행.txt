@@ -49,4 +49,5 @@
 프로젝트를 시작하기전 정해진 기능을 구현할 때 필요한 기술과 주의사항 등을 먼저 공부하고 개발을 시작해야 할 것 같다. 
 
 * 구체적인 소스코드와 흐름은 발표자료 및 프로젝트에 포함
-* git::Bitcamp/개인/TeamProject/TeamProject5_LAL(Chat)/
+* Unity 프로젝트 전체는 용량 문제로 업로드가 안되기 때문에 소스코드만 올림
+* git::Bitcamp/개인/TeamProject/TeamProject6_EscapeRuin/
