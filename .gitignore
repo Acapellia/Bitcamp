@@ -15,6 +15,9 @@
 **/App.config
 
 # -unity-
+**/[Rr]esources
+**/ARVR/
+**/[Uu]nity/
 **/[Ll]ibrary/
 **/[Tt]emp/
 **/[Oo]bj/
