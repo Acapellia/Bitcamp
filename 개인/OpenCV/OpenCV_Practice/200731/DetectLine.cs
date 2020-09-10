@@ -7,7 +7,7 @@ namespace _200731 {
         static void Main(string[] args) {
             Mat src = new Mat("../../../../Images/birds_ball.jpg");
             Mat dst = new Mat();
-
+            byte[] a;
             Cv2.CvtColor(src, dst, ColorConversionCodes.BGR2GRAY);
             //Cv2.Threshold(dst, dst, 120, 255, ThresholdTypes.Binary);
             Cv2.GaussianBlur(dst, dst, new Size(3, 3), 1, 0, BorderTypes.Default);
