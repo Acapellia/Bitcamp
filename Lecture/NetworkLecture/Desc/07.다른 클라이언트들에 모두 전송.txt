@@ -1,0 +1,21 @@
+1. 클라이언트들이 접속할 때마다 
+  service.session_created_callback += on_session_created;
+  에 등록한 on_session_created가 자동으로 호출된다
+
+2. on_session_created는 호출될 때마다 
+   userlist.Add(user); 처럼 CGameUser객체를
+   userlist에 등록한다.
+   userlist는 접속한 모든 클라이언트를 보관하는 리스트 객체
+
+3. Program클래스에 다른 모든 클라이언트에 전송하는 메서드를 추가
+   user를 제외한 모든 클라이언트에 msg를 전송
+        public static void sendAllClient(CGameUser user, CPacket msg)
+        {
+            foreach(CGameUser gameUser in userlist)
+            {
+	  if(user != gameUser)
+                {
+	       gameUser.send(msg);
+                }
+            }
+        }

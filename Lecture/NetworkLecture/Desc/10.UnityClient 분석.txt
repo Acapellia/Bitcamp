@@ -1,0 +1,53 @@
+1. Scene에 스크립트 컴포넌트를 동작시킬 게임오브젝트가 2개 필요하다
+   1.1 NetworkManager
+      ; 네트워크 통신
+        CNetworkManager.cs를 컴포넌트로 포함
+   1.2 GameMain
+      ; 유니티 씬과 CNetworkManager 객체를 연결
+        CGameMain.cs를 컴포넌트로 포함
+
+2. CGameMain.cs
+   2.1 UI 컴포넌트 존재
+   2.2 NetworkManager를 찾고 포함된 컴포넌트인 
+      CNetworkManager객체를 가리키도록 변수에 저장한다
+      통신을 하기 위해서는 CNetworkManager를 사용한다.
+   2.3 데이터 전송시 void sendMsg()를 사용
+        - 내부에서 CNetworkManager객체를 사용해서 send처리
+       데이터 수신시 void on_receive_chat_msg(string text)
+        - 외부에서 이 메서드를 호출하도록 public으로 만듬
+
+3. CNetworkManager.cs
+   3.1 Awake()에서 CFreeNetUnityService 객체를 얻어온다
+       CFreeNetUnityService 객체를 통해 FreeNet.dll의 
+       통신기능을 사용하고 있다.
+   3.2 CFreeNetUnityService 객체에 이벤트 핸들러를 등록
+       3.2.1 on_status_changed는 접속/단절시 호출
+       3.2.2 on_message는 서버로부터 데이터 수신시 호출
+   3.3 Start()에서 CFreeNetUnityService 객체를 통해
+       서버의 address정보를 통해 접속을 요청한다(connect)
+   3.4 on_message는 서버와의 포로토콜 명령에 따른 분기처리가
+       이루어지는 곳이다.  
+   3.5 서버로 데이터 전송시 CFreeNetUnityService객체를 통해
+       전송이 이루어진다(send)
+
+4. CFreeNetUnityService.cs는 FreeNet.dll의 기능을 사용하기 
+   위한 필수 스크립트로
+   서버와의 연결을 추상화한 클래스인 CRemoteServerPeer객체에 
+   CNetworkManager객체를 전달하는 역할을 하고 있다.
+   4.1 Awake()시 CFreeNetEventManager.cs를 객체를 생성하고 있다.
+      CFreeNetEventManager.cs는 Unity스크립트가 아니고
+      일반적은 .NET의 클래스이다.
+   4.2 CFreeNetUnityService.cs의 connect함수는
+       CSimpleClient의 Program.cs의 Main함수의 서버접속기능과
+       동일한 코드로 되어 있다.
+
+5. CFreeNetEventManager.cs는 FreeNet.dll의 기능과
+   CFreeNetUnityService를 연결해준다
+   (이벤트 큐에 저장, 패킷을 큐에 저장)
+   5.1 유니티 Monobehavior를 상속받지 않은 일반 Class이다.
+   5.2 그래서 사용할 때는 특정 게임오브젝트에 컴포넌트화하지 않고
+      직접 객체를 new로 생성해서 사용하게 된다.
+   5.3 이벤트나 패킷을 발생되었을 때 Unity 컴포넌트로 직접 
+      전달하지 않고 Queue에서 넣는다.
+   5.4 이벤트/패킷이 존재하는지 여부 함수
+       이벤트/패킷을 Queue에서 꺼내는 함수

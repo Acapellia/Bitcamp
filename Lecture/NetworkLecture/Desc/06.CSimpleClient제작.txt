@@ -1,0 +1,18 @@
+1. FreeNet.dll 을 참조추가
+2. using FreeNet;
+3. connector.connected_callback += on_connected_gameserver;
+   서버와 접속이 이루어지면 자동으로 호출되는 콜백 함수 등록
+4. IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 7979);
+   서버의 ip와 port
+5. connector.connect(endpoint);
+   서버와 접속시도/연결
+6. 콘솔에서 문자열 입력
+7. 패킷 구성
+   7.1 패킷 헤더(id)
+    CPacket msg = CPacket.create((short)PROTOCOL.CHAT_MSG_REQ);
+   7.2 패킷 본문(채팅 데이터)
+    msg.push(line);
+   7.3 클라이언트가 1개이므로 첫번째 등록된 객체에 send
+       (서버에 전송이 이루어진다);
+       game_servers[0].send(msg);
+8. Server와 Client는 반드시 protocol.cs에 정의한 프로토콜 명령(id)가 동일해야 한다

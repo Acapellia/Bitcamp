@@ -1,0 +1,67 @@
+1. FreeNet.dll 을 참조추가
+2. using FreeNet;
+3. 클라이언트가 접속할 때마다 요소가 추가되는 리스트
+   클라이언트가 단절할 때마다 요소가 삭제되는 리스트
+   static List<CGameUser> userlist;
+4. CGameUser가 클라이언트 담당 객체
+   CUserToken은 클라이언트와 연결된 객체
+5. service.session_created_callback += on_session_created;
+   는 클라이언트 접속할 때마다 프레임워크 내부에서 자동으로
+   호출하는 콜백 메서드
+6. 함수에 커서를 두고 F12를 누르면 함수 구현부로 이동한다
+   "모든 참조 찾기"(Shift + F12)는 이 함수가 사용되는 모든
+   소스 코드 부분을 찾아준다.
+   "호출 계층 보기"는 이 함수를 호출하는 상위 계층의 모든
+   함수 연결 부분을 찾아준다.
+7. service.listen("0.0.0.0", 7979, 100);
+   "0.0.0.0" => 이 프로세스가 동작하는 Host(PC)의 주소
+   7979 => 포트 번호 (0~65535): 1024 ~ 65535 사이에서 정해라
+   100 => 클라이언트가 동시에 접속이 이루어지면 동시에 처리하기
+         어려우니 소켓 내부에 100개의 Queue를 생성해서
+         클라이언트의 접속을 대기시켜놓는다.
+         서버의 동시 접속자에 따라 Test를 통해 정한다
+8. Main Thread는 할일이 없으므로
+   그냥 무한 루프를 돌린다.
+   단, 다른 스레드가 제어권을 갖을 수 있게 하기 위해
+   루프 1번마다 Sleep처리를 해야 한다.
+
+9. CGameUser는 클라이언트와 연결을 의미하는 클래스
+  - on_message : 클라이언트로부터 데이터 수신시 호출
+                 클라이언트와의 약속(App 프로토콜)을 정의
+                 그에 따른 행동을 결정
+  - send(CPacket msg) : 연결 클라이언트에 데이터 전송
+  - disconnect() : 클라이언트와의 접속 해제
+  - on_removed() : 클라이언트가 접속 해제하면 호출된다
+
+10. protocol.cs 는 프로토콜에 사용하는 명령을 정의하는 소스
+  		BEGIN = 0,
+
+		CHAT_MSG_REQ = 1,
+		CHAT_MSG_ACK = 2,
+
+		END
+    
+    프로토콜 명령 개수가 몇개? END-1 개
+
+    CHAT_MSG_REQ : Request 요청(편지 전송)
+    CHAT_MSG_ACK : Acknowledge : Request에 대한 수신 잘했다
+                   (내용을 안 읽었고)편지는 잘 받았다
+
+11. on_message에서는 다음과 같은 처리가 이루어진다
+   11.1 byte[]을 해석할 수 있는 CPacket으로 전환한다
+   11.2 CPakcet으로부터 protocol_id를 얻는다
+        protocol_id가 바로 "프로토콜 명령"이다
+   11.3 protocol_id에 따라 명령을 처리한다
+        switch~case
+
+   11.4 msg.pop_protocol_id() 는 명령의 종류
+        msg.pop_string() 는 채팅 본문
+
+   11.5
+        CPacket response = CPacket.create((short)PROTOCOL.CHAT_MSG_ACK);
+        response.push(text);
+        send(response);
+
+        클라이언트한테 잘 받았다는 사실을 전달한다 PROTOCOL.CHAT_MSG_ACK
+        패킷 = 명령 + 데이터
+             = protocol_id + text

@@ -1,0 +1,18 @@
+1. FreeNet.dll을 포함시킨다(.net 3.5컴파일)
+2. Scene에 NetworkManager게임오브젝트와
+           GameMain게임오브젝트를 생성한다
+3. NetworkManager게임오브젝트에는 CNetworkManager.cs를 포함
+   GameMain에는 CGameMain.cs를 포함
+4. CNetworkManager.cs는 CFreeNetUnityService.cs를 사용하므로
+   추가
+5. CFreeNetUnityService.cs는 CRemoteServerPeer.cs와
+   CFreeNetEventManager.cs를 사용하므로 추가한다
+6. 서버와의 프로토콜 정의가 명의된 protocol.cs를 추가한다
+
+7. 씬의 UI 변수를 추가할 곳은 CGameMain.cs
+   서버의 address를 수정할 곳은 CNetworkManager.cs의 
+   connect
+   서버와의 프로토콜 명령이 추가/변경될 때 추가/수정이 필요한
+   곳은 CNetworkManager.cs의 on_message
+   서버와 접속/단절시 특정 처리를 원할 때
+   CNetworkManager.cs의 on_status_changed를 수정하면 된다.

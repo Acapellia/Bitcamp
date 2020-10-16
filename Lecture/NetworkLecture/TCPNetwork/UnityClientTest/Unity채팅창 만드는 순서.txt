@@ -1,0 +1,13 @@
+<무한 스크롤 채팅 창 만들기>
+1. Canvas 아래에 3개 UI 컴포넌트를 생성한다
+   1-1) 메시지 출력창
+        ScrollView
+		  - Viewport
+		    - Content
+			  (ContentSizeFitter)
+			  (Vertical Layout Group)
+			  - InputField
+		  - Scrollbar Horizontal
+		  - Scvollbar Vertical
+   1-2) 메시지 입력창(InputField)
+   1-3) 전송버튼(Button)

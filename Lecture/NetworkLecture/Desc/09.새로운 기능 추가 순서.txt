@@ -1,0 +1,41 @@
+1. UnityClient에 Cube 색상을 변화시키는 기능을 추가한다.
+  R키 -> Red
+  G키 -> Green
+  B키 -> Blue
+  Y키 -> Yellow
+  csRotateMove.cs에 기능을 추가한다
+
+2. 서버에 "색상 변화"에 대한 패킷을 전송하기 위해
+   서버 <-> 클라이언트 간에 반드시 동일한 약속(프로토콜)을
+   정해야 한다.
+   protocol.cs 파일을 찾아서 명령(id)에 대한 상수를 정의해야
+   한다.(서버와 클라이언트 모두)
+
+3. 클라이언트는 정의한 명령으로 서버로 전송하는 메서드를 제작한다
+   CRotMovMain.cs에 sendChangeColorMsg메서드를 제작
+
+4. 서버는 클라이언트가 보내오는 패킷을 수신 처리하는 코드를
+   추가한다.
+   CGameUser.cs의 on_message 메서드에 추가한다.
+   case PROTOCOL.COLOR_MSG_REQ: 항목을 추가한다
+   4.1) 보내온 클라이언트에 PROTOCOL.COLOR_MSG_ACK 를
+        전송한다(잘 받았어~의 의미)
+   4.2) 나머지 접속한 모든 클라이언트에 
+        PROTOCOL.COLOR_MSG_DISPATCH 를 전송한다
+        (다른 클라이언트가 보내온 데이터 보내줄께~의 의미)
+
+5. 클라이언트는 서버가 보내오는 2가지 종류의 패킷에 대한
+   처리 코드를 추가한다.
+   NetworkManager 게임오브젝트에 포함된
+   CNetworkManager.cs 스크립트(컴포넌트)에 존재하는
+   on_message에 서버가 전송한 데이터가 수신된다.
+   5.1) case PROTOCOL.COLOR_MSG_ACK:
+        잘 받았다는 걸로 알고 있으면 됨
+   5.2) case PROTOCOL.COLOR_MSG_DISPATCH:
+        cube의 컬러를 변경시키면 됨.
+        CRotMovMain.cs에 on_receive_color_msg를 추가함
+        csRoateMove.cs에 putColor를 추가함
+
+6. 클라이언트는 패킷을 전송하기 위해서 
+   csRoateMove.cs 에 
+  rotMovMain.sendChangeColorMsg(color); 을 추가한다.
