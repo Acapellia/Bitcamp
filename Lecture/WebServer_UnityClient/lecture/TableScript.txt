@@ -1,0 +1,6 @@
+drop table if exists logininfo;
+create table if not exists logininfo(
+	email varchar(30) not null,
+	password varchar(30) not null,
+	primary key(email)
+);
