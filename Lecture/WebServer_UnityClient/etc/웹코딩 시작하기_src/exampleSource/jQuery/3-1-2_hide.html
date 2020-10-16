@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>엘리먼트 안보이게 하기</title>
+<link rel="stylesheet" href="../css/cssEx/cssReset.css" />
+<style>
+div{width:200px;padding:20px;background:skyblue}
+#displayBlock{display:block}
+</style>
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+<script>
+$(function(){
+  $('#displayBlock').hide();
+});
+</script>
+</head>
+<body>
+  <div id="displayBlock">
+    저는 display:block가 적용된 박스<br />
+    jQuery의 hide()함수로 인해 block값이 none으로 변경되어 숨겨짐
+  </div>
+</body>
+</html>

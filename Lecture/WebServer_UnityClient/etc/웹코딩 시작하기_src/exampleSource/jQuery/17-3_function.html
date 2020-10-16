@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>return 사용하기</title>
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+<script>
+$(function(){
+  function add(num1, num2){
+    result = num1 + num2;
+    return result;
+  }
+  
+  //이렇게 변수뿐 아니라 값을 넣는것도 가능
+  console.log('add함수의 return값 ' + add(10,20));
+
+  });
+</script>
+</head>
+<body>
+</body>
+</html>
