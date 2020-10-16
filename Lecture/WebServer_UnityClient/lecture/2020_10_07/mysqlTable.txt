@@ -1,0 +1,40 @@
+DROP TABLE IF EXISTS loginInfo;
+
+CREATE TABLE IF NOT EXISTS loginInfo(
+	email varchar(30) NOT NULL,
+	password varchar(30) NOT NULL,
+	PRIMARY KEY(email)
+);
+
+DROP TABLE IF EXISTS userInfo;
+
+CREATE TABLE IF NOT EXISTS userInfo(
+	email varchar(30) NOT NULL,
+	score int	NOT NULL,
+	x decimal(16,6),
+	y decimal(16,6),
+	z decimal(16,6),
+	PRIMARY KEY(email)
+);
+
+DROP TABLE IF NOT EXISTS objTransform;
+
+CREATE TABLE IF NOT EXISTS objTransform(
+	serial_num int NOT NULL AUTO_INCREMENT,
+	obj_id int NOT NULL,
+	position_x decimal(16, 6), 
+	position_y decimal(16, 6), 
+	position_z decimal(16, 6), 
+	rotation_x decimal(16, 6), 
+	rotation_y decimal(16, 6), 
+	rotation_z decimal(16, 6), 
+	rotation_w decimal(16, 6), 
+	scale_x decimal(16, 6), 
+	scale_y decimal(16, 6), 
+	scale_z decimal(16, 6), 
+	PRIMARY KEY(serial_num)
+);
+
+
+
+
